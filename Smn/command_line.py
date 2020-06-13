@@ -33,4 +33,3 @@ def handle_new(smn, args):
 
 if __name__ == '__main__':
     cli()
-
