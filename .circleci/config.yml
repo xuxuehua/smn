@@ -111,7 +111,7 @@ jobs:
           command: |
             . venv/bin/activate
             pip install --upgrade pip
-            pip install --user --upgrade twine setuptools wheel
+            pip install twine setuptools wheel
 
       - run:
           name: upload to pypi
