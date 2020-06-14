@@ -3,6 +3,9 @@ workflows:
   smn_workflow:
     jobs:
       - build:
+          filters:
+            branches:
+              only: dev
       - test-python-install:
           version: "3.6"
           requires:
