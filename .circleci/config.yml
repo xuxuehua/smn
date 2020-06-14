@@ -117,4 +117,6 @@ jobs:
           name: upload to pypi
           command: |
             . venv/bin/activate
+            pwd
+            ls -la
             python -m twine upload --repository-url  https://upload.pypi.org/legacy/ dist/*
