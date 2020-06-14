@@ -111,4 +111,4 @@ jobs:
             ls -la
             cat ~/.pypirc
             python setup.py sdist bdist_wheel
-            twine upload --non-interactive --repository-url  https://upload.pypi.org/legacy/ dist/*
+            twine upload --non-interactive -u __token__ -p $PYPI_PASSWORD --repository-url  https://upload.pypi.org/legacy/ dist/*
