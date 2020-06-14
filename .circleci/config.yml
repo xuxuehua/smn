@@ -110,4 +110,5 @@ jobs:
           name: upload to pypi
           command: |
             . venv/bin/activate
+            pip install --user --upgrade twine setuptools wheel
             python -m twine upload --repository-url  https://upload.pypi.org/legacy/ dist/*
