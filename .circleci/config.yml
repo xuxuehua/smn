@@ -1,11 +1,9 @@
 version: 2.1
 workflows:
-  build_and_deploy:
+  version: 2
+  smn_workflow:
     jobs:
       - build:
-          filters:
-            tags:
-              only: /.*/
       - test-python-install:
           version: "3.6"
           requires:
@@ -17,6 +15,7 @@ workflows:
       - deploy:
           requires:
             - build
+
 jobs:
   build:
     docker:
@@ -24,7 +23,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-dependency-cache-{{ checksum "setup.py" }}
       - run:
           name: install python dependencies
           command: |
@@ -32,7 +31,7 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-dependency-cache-{{ checksum "setup.py" }}
           paths:
             - "venv"
       - run:
@@ -42,6 +41,7 @@ jobs:
             echo "skip test"
       - store_artifacts:
           path: htmlcov/
+
   test-python-install:
     parameters:
       version:
@@ -52,7 +52,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-dependency-cache-{{ checksum "setup.py" }}
       - run:
           name: install python dependencies
           command: |
@@ -60,7 +60,7 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }
           paths:
             - "venv"
       - run:
@@ -87,7 +87,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-dependency-cache-{{ checksum "setup.py" }}
       - run:
           name: install python dependencies
           command: |
@@ -95,7 +95,7 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-dependency-cache-{{ checksum "setup.py" }}
           paths:
             - "venv"
       - run:
@@ -104,10 +104,6 @@ jobs:
             echo -e "[pypi]" >> ~/.pypirc
             echo -e "username = $USERNAME" >> ~/.pypirc
             echo -e "password = $PASSWORD" >> ~/.pypirc
-      - run:
-          name: create packages
-          command: |
-            make package
       - run:
           name: upload to pypi
           command: |
