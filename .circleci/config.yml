@@ -107,8 +107,14 @@ jobs:
             echo -e "username = $USERNAME" >> ~/.pypirc
             echo -e "password = $PASSWORD" >> ~/.pypirc
       - run:
+          name: install upload requirements
+          command: |
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install --user --upgrade twine setuptools wheel
+
+      - run:
           name: upload to pypi
           command: |
             . venv/bin/activate
-            pip install --user --upgrade twine setuptools wheel
             python -m twine upload --repository-url  https://upload.pypi.org/legacy/ dist/*
