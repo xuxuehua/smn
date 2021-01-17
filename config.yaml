@@ -1,1 +1,16 @@
-source_path: /Users/rxu/coding/github/smn/smn
+attach: attach
+author: ''
+debug: false
+default_category: default
+description: ''
+html_dirname: html_outputs
+keywords: ''
+md_dirname: md_contents
+notebook_path: /Users/rxu/coding/github/smn
+pygments: true
+root: /
+theme: simple2
+themes_dir: themes
+time: '2021-01-17 17:12:57.046886+08:00'
+title: ''
+url: ''

@@ -1,0 +1,18 @@
+url: http://XuXueHua.com
+title: Xu XueHua
+keywords: Xu XueHua
+description: Xu XueHua's public notes
+author: Xu XueHua
+
+root: /
+source: content
+destination: output
+themes_dir: themes
+theme: simple2
+
+category:
+  - name: Linux
+
+default_ext: md
+pygments: true
+debug: false

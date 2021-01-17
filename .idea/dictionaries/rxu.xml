@@ -1,6 +1,11 @@
 <component name="ProjectDictionaryState">
   <dictionary name="rxu">
     <words>
+      <w>asctime</w>
+      <w>dirnames</w>
+      <w>dirpath</w>
+      <w>fullpath</w>
+      <w>levelname</w>
       <w>venv</w>
     </words>
   </dictionary>
